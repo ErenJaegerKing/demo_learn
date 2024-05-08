@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 @Slf4j
 public class IPLocationUtils {
@@ -129,7 +130,12 @@ public class IPLocationUtils {
 
         List<IPMessage> ipMessageList = new ArrayList<>();
         for (String ipAddr : ipAddrList) {
-            ipMessageList.add(IPLocationUtils.getIPMessage(ipAddr));
+            try {
+                ipMessageList.add(IPLocationUtils.getIPMessage(ipAddr));
+            } catch (Exception e) {
+                System.out.println("Error processing IP address: " + ipAddr);
+                e.printStackTrace();
+            }
         }
         System.out.println(ipMessageList);
 

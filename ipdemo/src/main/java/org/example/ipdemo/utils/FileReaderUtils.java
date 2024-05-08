@@ -16,7 +16,7 @@ public class FileReaderUtils {
 
     public static List<String> readFile(String path) {
         if (StringUtils.isBlank(path)) {
-            path = "D:\\Workspace\\workspace\\path\\ipdates.txt";
+            path = "D:\\Workspace\\workspace\\path\\txt";
         }
         List<String> lines = new ArrayList<>();
         FileReader fr = null;
@@ -25,7 +25,7 @@ public class FileReaderUtils {
             BufferedReader br = new BufferedReader(fr);
             String line;
             while ((line = br.readLine()) != null) {
-                lines.add(line);
+                lines.add(line.replace("\"",""));
             }
             br.close();
             fr.close();
@@ -37,7 +37,7 @@ public class FileReaderUtils {
 
     public static void writeFile(List<String> ipAddrList, List<IPMessage> ipMessageList) {
 
-        String path = "D:\\Workspace\\workspace\\path\\ipdates1.txt";
+        String path = "D:\\Workspace\\workspace\\path\\ipAddr.txt";
 
         FileWriter fw = null;
         try {
